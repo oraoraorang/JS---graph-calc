@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="GraphCalc - a small Desmos-style graphing calculator with sliders." />
+    <title>GraphCalc</title>
+
+    <!-- Tailwind CSS via CDN (no build step). Fine for a project like this; for production use the Tailwind CLI. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.1.18/dist/index.global.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body class="h-screen overflow-hidden bg-slate-100 text-slate-800">
+    <div class="flex h-full flex-col md:flex-row">
+      <!-- Sidebar: expression and slider list -->
+      <aside class="flex h-[45%] w-full flex-col border-b border-slate-300 bg-white md:h-full md:w-96 md:border-b-0 md:border-r">
+        <header class="flex items-center justify-between gap-2 border-b border-slate-200 px-3 py-3">
+          <h1 class="text-lg font-semibold tracking-tight">GraphCalc</h1>
+          <div class="flex gap-2">
+            <button id="add-expression" type="button"
+              class="rounded bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700">
+              + Expression
+            </button>
+            <button id="add-slider" type="button"
+              class="rounded border border-slate-300 px-3 py-1.5 text-sm font-medium hover:bg-slate-100">
+              + Slider
+            </button>
+          </div>
+        </header>
+
+        <div id="item-list" class="flex-1 overflow-y-auto"></div>
+
+        <footer class="hidden border-t border-slate-200 px-3 py-2 text-xs text-slate-500 md:block">
+          Try <code class="font-mono">y = a * sin(x)</code>, then move the slider <code class="font-mono">a</code>.
+          Supports <code class="font-mono">sqrt, abs, log, sin, cos, tan, ^</code> and constants <code class="font-mono">pi, e</code>.
+        </footer>
+      </aside>
+
+      <!-- Graph area -->
+      <main class="relative flex-1">
+        <div id="graph" class="absolute inset-0"></div>
+        <button id="reset-view" type="button"
+          class="absolute right-3 top-3 rounded border border-slate-300 bg-white/90 px-3 py-1.5 text-sm font-medium shadow-sm hover:bg-white">
+          Reset view
+        </button>
+        <p id="load-error" class="absolute inset-x-4 top-16 hidden rounded bg-red-100 px-4 py-3 text-sm text-red-700"></p>
+      </main>
+    </div>
+
+    <!-- Libraries (pinned versions, loaded before the app code) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@14.9.1/lib/browser/math.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/function-plot@1.25.1/dist/function-plot.js"></script>
+
+    <!-- App code (ES modules) -->
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "graphcalc",
+  "version": "1.0.0",
+  "description": "GraphCalc - a small Desmos-style graphing calculator (jQuery, Tailwind CSS, math.js, function-plot)",
+  "private": true,
+  "scripts": {
+    "start": "npx --yes serve ."
+  },
+  "license": "ISC"
+}
